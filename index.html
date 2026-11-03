@@ -112,18 +112,23 @@
                 Direct connections to premier physicians, plastic surgeons, hair restoration specialists, and boutique medical spas across Corona del Mar, Newport Beach, and Laguna Beach.
             </p>
 
-            <!-- Real-time Instant Search Box -->
-            <div class="max-w-2xl mx-auto bg-white p-2 rounded-2xl shadow-2xl flex items-center gap-2 text-slate-800">
-                <div class="pl-4 text-coastal-800 text-lg">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <input type="text" 
-                       id="searchInput" 
-                       placeholder="Search doctor name, specialty (e.g. Hair Restoration, Botox), or zip code..." 
-                       class="w-full py-3 px-2 text-sm sm:text-base outline-none bg-transparent placeholder-slate-400">
-                <button onclick="renderDirectory()" class="bg-coastal-900 hover:bg-coastal-800 text-white font-semibold px-6 py-3 rounded-xl text-sm transition">
-                    Search
-                </button>
+            <!-- Quick Jump Category Navigation Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto pt-2">
+                <a href="#cat-hair" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full backdrop-blur-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-scissors text-sand-500"></i> Hair Restoration
+                </a>
+                <a href="#cat-surgery" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full backdrop-blur-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-[#d4af37] fa-user-doctor text-sand-500"></i> Plastic Surgery
+                </a>
+                <a href="#cat-derm" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full backdrop-blur-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-sparkles text-sand-500"></i> Dermatology & MedSpas
+                </a>
+                <a href="#cat-dental" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full backdrop-blur-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-tooth text-sand-500"></i> Cosmetic Dentistry
+                </a>
+                <a href="#cat-concierge" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full backdrop-blur-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-heart-pulse text-sand-500"></i> Concierge & Longevity
+                </a>
             </div>
         </div>
     </section>
@@ -131,104 +136,63 @@
     <!-- Main Content Container -->
     <main id="directory" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
         
-        <!-- Controls & Filters Section -->
-        <div class="mb-10 space-y-6">
-            
-            <!-- Area Switcher Tabs -->
-            <div id="areas" class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Browse by Coastal Region</h2>
-                    <p class="text-xs text-slate-500">Filter licensed doctors and practices by location</p>
+        <!-- Regional Filter Header -->
+        <div id="areas" class="mb-12 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="w-3 h-3 rounded-full bg-sand-500"></span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Explore Coastal Healthcare Hubs</h2>
                 </div>
-
-                <div class="flex flex-wrap gap-2" id="areaTabs">
-                    <button class="area-btn active bg-coastal-900 text-white text-xs font-semibold px-4 py-2 rounded-lg transition" data-area="all">
-                        All Regions
-                    </button>
-                    <button class="area-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition" data-area="Corona del Mar">
-                        Corona del Mar
-                    </button>
-                    <button class="area-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition" data-area="Newport Beach">
-                        Newport Beach
-                    </button>
-                    <button class="area-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition" data-area="Laguna Beach">
-                        Laguna Beach
-                    </button>
-                </div>
+                <p class="text-xs sm:text-sm text-slate-500">Select a region to focus on specific healthcare corridors along the Gold Coast.</p>
             </div>
 
-            <!-- Specialty Pill Filter -->
-            <div id="specialties" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="specialtyPills">
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2 whitespace-nowrap">Specialty:</span>
-                <button class="specialty-pill active bg-sand-500 text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap" data-specialty="all">
-                    All Practices
+            <div class="flex flex-wrap gap-2 w-full md:w-auto" id="areaTabs">
+                <button class="area-btn active bg-coastal-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow transition" data-area="all">
+                    All Regions
                 </button>
-                <button class="specialty-pill bg-white text-slate-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-coastal-500 whitespace-nowrap" data-specialty="Hair Restoration">
-                    Hair Restoration
+                <button class="area-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-4 py-2.5 rounded-xl transition" data-area="Corona del Mar">
+                    Corona del Mar
                 </button>
-                <button class="specialty-pill bg-white text-slate-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-coastal-500 whitespace-nowrap" data-specialty="Plastic Surgery">
-                    Plastic Surgery
+                <button class="area-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-4 py-2.5 rounded-xl transition" data-area="Newport Beach">
+                    Newport Beach
                 </button>
-                <button class="specialty-pill bg-white text-slate-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-coastal-500 whitespace-nowrap" data-specialty="Dermatology & MedSpas">
-                    Dermatology & MedSpas
-                </button>
-                <button class="specialty-pill bg-white text-slate-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-coastal-500 whitespace-nowrap" data-specialty="Cosmetic Dentistry">
-                    Cosmetic Dentistry
-                </button>
-                <button class="specialty-pill bg-white text-slate-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-coastal-500 whitespace-nowrap" data-specialty="Concierge Medicine">
-                    Concierge Medicine
+                <button class="area-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-4 py-2.5 rounded-xl transition" data-area="Laguna Beach">
+                    Laguna Beach
                 </button>
             </div>
         </div>
 
-        <!-- Result Status Counter -->
-        <div class="flex items-center justify-between mb-6 text-xs text-slate-500 font-medium">
-            <span id="resultCount">Showing practices...</span>
-            <span class="flex items-center gap-1 text-emerald-600">
-                <i class="fa-solid fa-lock"></i> 100% Outbound Direct Links
-            </span>
-        </div>
-
-        <!-- Practice Listings Grid -->
-        <div id="listingsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Dynamic JavaScript Content Cards Rendered Here -->
-        </div>
-
-        <!-- No Results Found Indicator -->
-        <div id="noResults" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm">
-            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                <i class="fa-solid fa-user-slash"></i>
-            </div>
-            <h3 class="text-lg font-bold text-slate-800 mb-1">No practices match your filter criteria</h3>
-            <p class="text-xs text-slate-500 mb-4">Try clearing your search query or selecting a different coastal area.</p>
-            <button id="resetFilters" class="bg-coastal-900 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-coastal-800 transition">
-                Reset All Filters
-            </button>
+        <!-- Categorized Listings Container -->
+        <div id="categorizedListings" class="space-y-16">
+            <!-- Dynamically populates distinct category blocks -->
         </div>
 
         <!-- Direct Medical Directory Privacy Banner -->
-        <section id="privacy" class="mt-16 bg-gradient-to-r from-coastal-900 to-coastal-800 text-white rounded-2xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
-            <div class="relative z-10 max-w-3xl">
-                <div class="inline-flex items-center gap-2 bg-sand-500/20 text-sand-500 border border-sand-500/30 px-3 py-1 rounded-full text-xs font-semibold mb-4">
+        <section id="privacy" class="mt-20 bg-gradient-to-r from-coastal-900 via-coastal-800 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+            <div class="relative z-10 max-w-4xl">
+                <div class="inline-flex items-center gap-2 bg-sand-500/20 text-sand-500 border border-sand-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-4 backdrop-blur-md">
                     <i class="fa-solid fa-shield-halved"></i>
                     <span>Direct Utility Model</span>
                 </div>
-                <h3 class="text-2xl sm:text-3xl font-bold mb-3">Pure Direct Medical Directory. Zero Friction.</h3>
-                <p class="text-sm sm:text-base text-slate-200 leading-relaxed mb-6">
-                    Unlike modern referral portals that harvest your personal health details, sell your phone number to sales reps, or gatekeep doctor scheduling behind tedious forms, <strong>DrCDM.com</strong> operates as a clean, open directory.
+                <h3 class="text-2xl sm:text-4xl font-extrabold mb-4 text-white">Pure Direct Medical Directory. Zero Data Harvesting.</h3>
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 font-light">
+                    Unlike third-party lead generation portals that require contact forms, sell your private medical details, or redirect you through call centers, <strong>DrCDM.com</strong> provides an open, frictionless experience. Get direct phone numbers and official doctor websites instantly.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-circle-check text-sand-500 mt-1"></i>
-                        <span><strong>No Forms:</strong> Click straight through to official medical websites.</span>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs sm:text-sm">
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                        <i class="fa-solid fa-circle-check text-sand-500 text-lg mb-2 block"></i>
+                        <span class="font-bold text-white block mb-1">No Forms Required</span>
+                        <span class="text-slate-400">Click straight through to official doctor portals.</span>
                     </div>
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-circle-check text-sand-500 mt-1"></i>
-                        <span><strong>No Data Tracking:</strong> Your search behavior stays private.</span>
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                        <i class="fa-solid fa-shield text-sand-500 text-lg mb-2 block"></i>
+                        <span class="font-bold text-white block mb-1">100% Private</span>
+                        <span class="text-slate-400">Zero tracking, cookies, or personal health storage.</span>
                     </div>
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-circle-check text-sand-500 mt-1"></i>
-                        <span><strong>Direct Calling:</strong> Tap to call official office phone lines.</span>
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                        <i class="fa-solid fa-phone-volume text-sand-500 text-lg mb-2 block"></i>
+                        <span class="font-bold text-white block mb-1">Direct Calling</span>
+                        <span class="text-slate-400">Tap to dial official practice receptionist lines.</span>
                     </div>
                 </div>
             </div>
@@ -270,52 +234,32 @@
 
     <!-- JavaScript Data & Logic -->
     <script>
-        // Sample Directory Dataset for Coastal Doctors & Clinics
+        // Expanded Comprehensive Coastal Directory Dataset
         const doctorsData = [
+            // --- HAIR RESTORATION & TRICHOLOGY ---
             {
-                name: "Corona del Mar Plastic Surgery Institute",
-                doctor: "Dr. Richard Higgins, MD, FACS",
-                specialty: "Plastic Surgery",
-                area: "Corona del Mar",
-                address: "2801 East Coast Hwy, Corona del Mar, CA 92625",
-                phone: "(949) 555-0142",
-                website: "https://www.cdmplasticsurgery.com",
-                tags: ["Rhinoplasty", "Facelift", "Breast Augmentation", "Body Contouring"]
-            },
-            {
+                id: "hair-1",
                 name: "Orange County Coastal Hair Restoration",
                 doctor: "Dr. Marcus Vance, MD",
                 specialty: "Hair Restoration",
+                categoryAnchor: "cat-hair",
+                categoryTitle: "Hair Restoration & Scalp Health",
+                categoryIcon: "fa-scissors",
                 area: "Corona del Mar",
                 address: "3100 East Coast Hwy, Corona del Mar, CA 92625",
                 phone: "(949) 555-0189",
                 website: "https://www.ochairrestoration.com",
-                tags: ["FUE Hair Transplant", "PRP Scalp Therapy", "Neograft", "Beard Restoration"]
+                tags: ["FUE Hair Transplant", "PRP Scalp Therapy", "Neograft", "Beard Restoration"],
+                featured: true
             },
             {
-                name: "Newport Beach Dermatology & Laser Center",
-                doctor: "Dr. Elena Rostova, MD",
-                specialty: "Dermatology & MedSpas",
-                area: "Newport Beach",
-                address: "1401 Avocado Ave, Newport Beach, CA 92660",
-                phone: "(949) 555-0199",
-                website: "https://www.newportdermatology.com",
-                tags: ["Botox & Fillers", "Laser Resurfacing", "Mohs Surgery", "Acne Care"]
-            },
-            {
-                name: "CdM Aesthetic Dentistry & Smile Design",
-                doctor: "Dr. Bradley Thorne, DDS",
-                specialty: "Cosmetic Dentistry",
-                area: "Corona del Mar",
-                address: "2415 East Coast Hwy, Corona del Mar, CA 92625",
-                phone: "(949) 555-0112",
-                website: "https://www.cdmsmiledesign.com",
-                tags: ["Veneers", "Smile Makeover", "Teeth Whitening", "Implants"]
-            },
-            {
+                id: "hair-2",
                 name: "Laguna Beach Hair Clinic & Trichology",
                 doctor: "Dr. Sarah Lin, MD",
                 specialty: "Hair Restoration",
+                categoryAnchor: "cat-hair",
+                categoryTitle: "Hair Restoration & Scalp Health",
+                categoryIcon: "fa-scissors",
                 area: "Laguna Beach",
                 address: "330 Park Ave, Laguna Beach, CA 92651",
                 phone: "(949) 555-0233",
@@ -323,9 +267,58 @@
                 tags: ["Hair Transplants", "PRP Therapy", "Scalp Micropigmentation"]
             },
             {
+                id: "hair-3",
+                name: "Newport Hair & Aesthetics Institute",
+                doctor: "Dr. Alan Mercer, MD",
+                specialty: "Hair Restoration",
+                categoryAnchor: "cat-hair",
+                categoryTitle: "Hair Restoration & Scalp Health",
+                categoryIcon: "fa-scissors",
+                area: "Newport Beach",
+                address: "20072 S Birch St, Newport Beach, CA 92660",
+                phone: "(949) 555-0611",
+                website: "https://www.newporthairinstitute.com",
+                tags: ["ARTAS Robotic FUE", "Female Hair Thinning", "Exosome Scalp Therapy"]
+            },
+            {
+                id: "hair-4",
+                name: "Pacific Coast Hair Regrowth Center",
+                doctor: "Dr. David Sterling, MD",
+                specialty: "Hair Restoration",
+                categoryAnchor: "cat-hair",
+                categoryTitle: "Hair Restoration & Scalp Health",
+                categoryIcon: "fa-scissors",
+                area: "Corona del Mar",
+                address: "2801 East Coast Hwy, Corona del Mar, CA 92625",
+                phone: "(949) 555-0722",
+                website: "https://www.pchhairrestoration.com",
+                tags: ["Low-Level Laser", "Eyebrow Transplants", "Follicular Unit Strips"]
+            },
+
+            // --- PLASTIC & COSMETIC SURGERY ---
+            {
+                id: "surg-1",
+                name: "Corona del Mar Plastic Surgery Institute",
+                doctor: "Dr. Richard Higgins, MD, FACS",
+                specialty: "Plastic Surgery",
+                categoryAnchor: "cat-surgery",
+                categoryTitle: "Plastic & Cosmetic Surgery",
+                categoryIcon: "fa-user-doctor",
+                area: "Corona del Mar",
+                address: "2801 East Coast Hwy, Corona del Mar, CA 92625",
+                phone: "(949) 555-0142",
+                website: "https://www.cdmplasticsurgery.com",
+                tags: ["Rhinoplasty", "Facelift", "Breast Augmentation", "Body Contouring"],
+                featured: true
+            },
+            {
+                id: "surg-2",
                 name: "Fashion Island Plastic & Reconstructive Surgery",
                 doctor: "Dr. Jeffrey Miller, MD",
                 specialty: "Plastic Surgery",
+                categoryAnchor: "cat-surgery",
+                categoryTitle: "Plastic & Cosmetic Surgery",
+                categoryIcon: "fa-user-doctor",
                 area: "Newport Beach",
                 address: "400 Newport Center Dr, Newport Beach, CA 92660",
                 phone: "(949) 555-0377",
@@ -333,19 +326,58 @@
                 tags: ["Mommy Makeover", "Blepharoplasty", "Liposuction", "Tummy Tuck"]
             },
             {
-                name: "Corona del Mar Concierge Internal Medicine",
-                doctor: "Dr. Katherine Hayes, MD",
-                specialty: "Concierge Medicine",
-                area: "Corona del Mar",
-                address: "3417 Ocean Blvd, Corona del Mar, CA 92625",
-                phone: "(949) 555-0422",
-                website: "https://www.cdmconciergemedicine.com",
-                tags: ["Executive Health", "Longevity Screening", "24/7 Physician Access"]
+                id: "surg-3",
+                name: "Laguna Oceanfront Aesthetic Surgery",
+                doctor: "Dr. Catherine DuBois, MD",
+                specialty: "Plastic Surgery",
+                categoryAnchor: "cat-surgery",
+                categoryTitle: "Plastic & Cosmetic Surgery",
+                categoryIcon: "fa-user-doctor",
+                area: "Laguna Beach",
+                address: "490 S Coast Hwy, Laguna Beach, CA 92651",
+                phone: "(949) 555-0844",
+                website: "https://www.lagunaoceanfrontplasticsurgery.com",
+                tags: ["Deep Plane Facelift", "Nasal Reconstruction", "Neck Lift"]
             },
             {
+                id: "surg-4",
+                name: "Newport Beach Facial Plastic Surgery",
+                doctor: "Dr. Harrison Forde, MD",
+                specialty: "Plastic Surgery",
+                categoryAnchor: "cat-surgery",
+                categoryTitle: "Plastic & Cosmetic Surgery",
+                categoryIcon: "fa-user-doctor",
+                area: "Newport Beach",
+                address: "1441 Avocada Ave, Newport Beach, CA 92660",
+                phone: "(949) 555-0911",
+                website: "https://www.newportfacialplastics.com",
+                tags: ["Custom Rhinoplasty", "Chin Implants", "Endoscopic Brow Lift"]
+            },
+
+            // --- DERMATOLOGY & MEDSPAS ---
+            {
+                id: "derm-1",
+                name: "Newport Beach Dermatology & Laser Center",
+                doctor: "Dr. Elena Rostova, MD",
+                specialty: "Dermatology & MedSpas",
+                categoryAnchor: "cat-derm",
+                categoryTitle: "Dermatology & Medical Spas",
+                categoryIcon: "fa-sparkles",
+                area: "Newport Beach",
+                address: "1401 Avocado Ave, Newport Beach, CA 92660",
+                phone: "(949) 555-0199",
+                website: "https://www.newportdermatology.com",
+                tags: ["Botox & Fillers", "Laser Resurfacing", "Mohs Surgery", "Acne Care"],
+                featured: true
+            },
+            {
+                id: "derm-2",
                 name: "Laguna Coastal Dermatology & Skin Spa",
                 doctor: "Dr. Nathan Choi, MD",
                 specialty: "Dermatology & MedSpas",
+                categoryAnchor: "cat-derm",
+                categoryTitle: "Dermatology & Medical Spas",
+                categoryIcon: "fa-sparkles",
                 area: "Laguna Beach",
                 address: "31852 Coast Hwy, Laguna Beach, CA 92651",
                 phone: "(949) 555-0588",
@@ -353,119 +385,287 @@
                 tags: ["HydraFacial", "CoolSculpting", "Skin Cancer Checks", "Microneedling"]
             },
             {
-                name: "Newport Hair & Aesthetics Institute",
-                doctor: "Dr. Alan Mercer, MD",
-                specialty: "Hair Restoration",
+                id: "derm-3",
+                name: "Corona del Mar Aesthetic MedSpa",
+                doctor: "Dr. Victoria Thorne, MD",
+                specialty: "Dermatology & MedSpas",
+                categoryAnchor: "cat-derm",
+                categoryTitle: "Dermatology & Medical Spas",
+                categoryIcon: "fa-sparkles",
+                area: "Corona del Mar",
+                address: "2345 East Coast Hwy, Corona del Mar, CA 92625",
+                phone: "(949) 555-0955",
+                website: "https://www.cdmaestheticmedspa.com",
+                tags: ["Sculptra", "IPL Photofacial", "Laser Hair Removal", "Morfeus8"]
+            },
+            {
+                id: "derm-4",
+                name: "Fashion Island Skin & Dermatology",
+                doctor: "Dr. Robert Vance, MD",
+                specialty: "Dermatology & MedSpas",
+                categoryAnchor: "cat-derm",
+                categoryTitle: "Dermatology & Medical Spas",
+                categoryIcon: "fa-sparkles",
                 area: "Newport Beach",
-                address: "20072 S Birch St, Newport Beach, CA 92660",
-                phone: "(949) 555-0611",
-                website: "https://www.newporthairinstitute.com",
-                tags: ["ARTAS Robotic FUE", "Female Hair Thinning", "Exosome Scalp Therapy"]
+                address: "500 Newport Center Dr, Newport Beach, CA 92660",
+                phone: "(949) 555-1011",
+                website: "https://www.fashionislandskinderm.com",
+                tags: ["Picosure Laser", "Dermal Fillers", "Rosacea Treatments"]
+            },
+
+            // --- COSMETIC DENTISTRY ---
+            {
+                id: "dent-1",
+                name: "CdM Aesthetic Dentistry & Smile Design",
+                doctor: "Dr. Bradley Thorne, DDS",
+                specialty: "Cosmetic Dentistry",
+                categoryAnchor: "cat-dental",
+                categoryTitle: "Cosmetic Dentistry & Smile Design",
+                categoryIcon: "fa-tooth",
+                area: "Corona del Mar",
+                address: "2415 East Coast Hwy, Corona del Mar, CA 92625",
+                phone: "(949) 555-0112",
+                website: "https://www.cdmsmiledesign.com",
+                tags: ["Porcelain Veneers", "Smile Makeover", "Zoom Whitening", "Implants"],
+                featured: true
+            },
+            {
+                id: "dent-2",
+                name: "Newport Coastal Dental Group",
+                doctor: "Dr. Amanda Blake, DDS",
+                specialty: "Cosmetic Dentistry",
+                categoryAnchor: "cat-dental",
+                categoryTitle: "Cosmetic Dentistry & Smile Design",
+                categoryIcon: "fa-tooth",
+                area: "Newport Beach",
+                address: "180 Newport Center Dr, Newport Beach, CA 92660",
+                phone: "(949) 555-1122",
+                website: "https://www.newportcoastaldental.com",
+                tags: ["Invisalign", "Full Mouth Reconstruction", "Sedation Dentistry"]
+            },
+            {
+                id: "dent-3",
+                name: "Laguna Village Cosmetic Dentistry",
+                doctor: "Dr. Christopher Hayes, DDS",
+                specialty: "Cosmetic Dentistry",
+                categoryAnchor: "cat-dental",
+                categoryTitle: "Cosmetic Dentistry & Smile Design",
+                categoryIcon: "fa-tooth",
+                area: "Laguna Beach",
+                address: "265 Ocean Ave, Laguna Beach, CA 92651",
+                phone: "(949) 555-1244",
+                website: "https://www.lagunavillagedental.com",
+                tags: ["Laser Dentistry", "Dental Implants", "Metal-Free Crowns"]
+            },
+
+            // --- CONCIERGE MEDICINE & LONGEVITY ---
+            {
+                id: "conc-1",
+                name: "Corona del Mar Concierge Internal Medicine",
+                doctor: "Dr. Katherine Hayes, MD",
+                specialty: "Concierge Medicine",
+                categoryAnchor: "cat-concierge",
+                categoryTitle: "Concierge Medicine & Longevity",
+                categoryIcon: "fa-heart-pulse",
+                area: "Corona del Mar",
+                address: "3417 Ocean Blvd, Corona del Mar, CA 92625",
+                phone: "(949) 555-0422",
+                website: "https://www.cdmconciergemedicine.com",
+                tags: ["Executive Health", "Longevity Screening", "24/7 Physician Access"],
+                featured: true
+            },
+            {
+                id: "conc-2",
+                name: "Newport Beach Executive Health & Anti-Aging",
+                doctor: "Dr. Jonathan Ross, MD",
+                specialty: "Concierge Medicine",
+                categoryAnchor: "cat-concierge",
+                categoryTitle: "Concierge Medicine & Longevity",
+                categoryIcon: "fa-heart-pulse",
+                area: "Newport Beach",
+                address: "1601 Avocada Ave, Newport Beach, CA 92660",
+                phone: "(949) 555-1355",
+                website: "https://www.newportexecutivehealth.com",
+                tags: ["Hormone Replacement", "Genetic Profiling", "Preventive Cardiology"]
+            },
+            {
+                id: "conc-3",
+                name: "Laguna Beach Integrative Medicine",
+                doctor: "Dr. Rebecca Vance, MD",
+                specialty: "Concierge Medicine",
+                categoryAnchor: "cat-concierge",
+                categoryTitle: "Concierge Medicine & Longevity",
+                categoryIcon: "fa-heart-pulse",
+                area: "Laguna Beach",
+                address: "1088 Eagle Rock Way, Laguna Beach, CA 92651",
+                phone: "(949) 555-1477",
+                website: "https://www.lagunaintegrativemed.com",
+                tags: ["Holistic Wellness", "Functional Medicine", "Peptide Therapy"]
             }
         ];
 
         // State Management
         let selectedArea = 'all';
-        let selectedSpecialty = 'all';
-        let searchQuery = '';
 
-        // DOM Elements
-        const grid = document.getElementById('listingsGrid');
-        const noResults = document.getElementById('noResults');
-        const resultCount = document.getElementById('resultCount');
-        const searchInput = document.getElementById('searchInput');
-        const yearSpan = document.getElementById('year');
-
-        // Render Cards Function
+        // Categorized Layout Renderer
         function renderDirectory() {
-            if (!grid) return;
-            grid.innerHTML = '';
-            
-            const q = searchQuery.toLowerCase().trim();
+            const container = document.getElementById('categorizedListings');
+            if (!container) return;
+            container.innerHTML = '';
 
-            const filtered = doctorsData.filter(doc => {
-                const matchesArea = (selectedArea === 'all') || (doc.area === selectedArea);
-                const matchesSpecialty = (selectedSpecialty === 'all') || (doc.specialty === selectedSpecialty);
+            // Grouping by categories
+            const categories = [
+                {
+                    anchor: "cat-hair",
+                    title: "Hair Restoration & Scalp Health",
+                    subtitle: "FUE, PRP therapy, robotic transplants, and trichology specialists",
+                    icon: "fa-scissors"
+                },
+                {
+                    anchor: "cat-surgery",
+                    title: "Plastic & Cosmetic Surgery",
+                    subtitle: "Board-certified plastic surgeons specializing in facial and body procedures",
+                    icon: "fa-user-doctor"
+                },
+                {
+                    anchor: "cat-derm",
+                    title: "Dermatology & Medical Spas",
+                    subtitle: "Advanced skin care, laser treatments, injectables, and medical dermatology",
+                    icon: "fa-sparkles"
+                },
+                {
+                    anchor: "cat-dental",
+                    title: "Cosmetic Dentistry & Smile Design",
+                    subtitle: "Porcelain veneers, implants, smile makeovers, and full reconstructive care",
+                    icon: "fa-tooth"
+                },
+                {
+                    anchor: "cat-concierge",
+                    title: "Concierge Medicine & Longevity",
+                    subtitle: "Direct primary care, executive health evaluations, and anti-aging medicine",
+                    icon: "fa-heart-pulse"
+                }
+            ];
 
-                const matchesSearch = !q || 
-                    doc.name.toLowerCase().includes(q) || 
-                    doc.doctor.toLowerCase().includes(q) || 
-                    doc.specialty.toLowerCase().includes(q) || 
-                    doc.area.toLowerCase().includes(q) ||
-                    doc.address.toLowerCase().includes(q) ||
-                    doc.tags.some(tag => tag.toLowerCase().includes(q));
+            let totalMatches = 0;
 
-                return matchesArea && matchesSpecialty && matchesSearch;
-            });
+            categories.forEach(cat => {
+                // Filter docs belonging to this category AND matching selected area
+                const matches = doctorsData.filter(doc => {
+                    const matchCategory = doc.categoryAnchor === cat.anchor;
+                    const matchArea = (selectedArea === 'all') || (doc.area === selectedArea);
+                    return matchCategory && matchArea;
+                });
 
-            // Update Count Header
-            if (resultCount) {
-                resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'practice' : 'practices'} found`;
-            }
+                if (matches.length === 0) return; // Hide empty categories under regional filter
+                totalMatches += matches.length;
 
-            if (filtered.length === 0) {
-                if (noResults) noResults.classList.remove('hidden');
-                grid.classList.add('hidden');
-                return;
-            }
+                // Category Section Block
+                const categorySection = document.createElement('section');
+                categorySection.id = cat.anchor;
+                categorySection.className = "scroll-mt-28 space-y-6";
 
-            if (noResults) noResults.classList.add('hidden');
-            grid.classList.remove('hidden');
-
-            filtered.forEach(doc => {
-                const card = document.createElement('div');
-                card.className = "glass-card rounded-2xl border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1";
-                
-                // Color badge based on location
-                let areaBadgeClass = "bg-coastal-100 text-coastal-800";
-                if(doc.area === 'Corona del Mar') areaBadgeClass = "bg-amber-100 text-amber-900 border border-amber-200";
-                if(doc.area === 'Laguna Beach') areaBadgeClass = "bg-emerald-100 text-emerald-900 border border-emerald-200";
-
-                card.innerHTML = `
-                    <div>
-                        <div class="flex items-start justify-between gap-2 mb-3">
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full ${areaBadgeClass}">
-                                <i class="fa-solid fa-location-dot mr-1"></i>${doc.area}
-                            </span>
-                            <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
-                                ${doc.specialty}
-                            </span>
+                // Section Title Banner
+                categorySection.innerHTML = `
+                    <div class="border-b-2 border-coastal-900/10 pb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-coastal-900 text-sand-500 flex items-center justify-center text-lg shadow-sm">
+                                <i class="fa-solid ${cat.icon}"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-slate-900">${cat.title}</h3>
+                                <p class="text-xs text-slate-500 font-medium">${cat.subtitle}</p>
+                            </div>
                         </div>
-
-                        <h4 class="text-lg font-bold text-slate-900 leading-snug mb-1">${doc.name}</h4>
-                        <p class="text-xs font-semibold text-coastal-800 mb-3">${doc.doctor}</p>
-                        
-                        <p class="text-xs text-slate-500 mb-4 flex items-start gap-1.5">
-                            <i class="fa-solid fa-map-pin text-slate-400 mt-0.5"></i>
-                            <span>${doc.address}</span>
-                        </p>
-
-                        <!-- Specialty Tags -->
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            ${doc.tags.map(tag => `<span class="bg-slate-50 border border-slate-200 text-slate-600 text-[10px] px-2 py-0.5 rounded">${tag}</span>`).join('')}
-                        </div>
+                        <span class="text-xs font-bold text-coastal-800 bg-coastal-50 border border-coastal-100 px-3 py-1 rounded-full">
+                            ${matches.length} ${matches.length === 1 ? 'Practice' : 'Practices'} Listed
+                        </span>
                     </div>
 
-                    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
-                        <!-- Direct Phone Call -->
-                        <a href="tel:${doc.phone.replace(/[^0-9]/g, '')}" class="w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-lg transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-phone text-coastal-600"></i>
-                            <span>${doc.phone}</span>
-                        </a>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${matches.map(doc => {
+                            let areaBadgeClass = "bg-coastal-100 text-coastal-800 border-coastal-200";
+                            if(doc.area === 'Corona del Mar') areaBadgeClass = "bg-amber-100 text-amber-900 border-amber-300";
+                            if(doc.area === 'Laguna Beach') areaBadgeClass = "bg-emerald-100 text-emerald-900 border-emerald-300";
 
-                        <!-- Direct Website Outbound Link -->
-                        <a href="${doc.website}" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-coastal-900 hover:bg-coastal-800 text-white text-xs font-semibold py-2.5 px-3 rounded-lg transition shadow-sm flex items-center justify-center gap-2">
-                            <span>Visit Official Website</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-sand-500"></i>
-                        </a>
+                            return `
+                                <div class="bg-white rounded-2xl border ${doc.featured ? 'border-sand-500 ring-2 ring-sand-500/20' : 'border-slate-200'} p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
+                                    
+                                    ${doc.featured ? `
+                                        <div class="absolute top-0 right-0 bg-sand-500 text-slate-900 font-extrabold text-[9px] uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-sm">
+                                            Featured Practice
+                                        </div>
+                                    ` : ''}
+
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border ${areaBadgeClass}">
+                                                <i class="fa-solid fa-location-dot mr-1"></i>${doc.area}
+                                            </span>
+                                        </div>
+
+                                        <h4 class="text-lg font-bold text-slate-900 leading-snug mb-1 group-hover:text-coastal-900 transition">${doc.name}</h4>
+                                        <p class="text-xs font-semibold text-coastal-800 mb-3">${doc.doctor}</p>
+                                        
+                                        <p class="text-xs text-slate-500 mb-4 flex items-start gap-2">
+                                            <i class="fa-solid fa-map-pin text-slate-400 mt-0.5"></i>
+                                            <span>${doc.address}</span>
+                                        </p>
+
+                                        <!-- Specialty Procedure Tags -->
+                                        <div class="flex flex-wrap gap-1.5 mb-6">
+                                            ${doc.tags.map(tag => `<span class="bg-slate-100 border border-slate-200/80 text-slate-600 text-[10px] px-2 py-0.5 rounded-md font-medium">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+                                        <!-- Direct Phone Call Button -->
+                                        <a href="tel:${doc.phone.replace(/[^0-9]/g, '')}" class="w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-2">
+                                            <i class="fa-solid fa-phone text-coastal-600"></i>
+                                            <span>${doc.phone}</span>
+                                        </a>
+
+                                        <!-- Direct Outbound Website Link -->
+                                        <a href="${doc.website}" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-coastal-900 hover:bg-coastal-800 text-white text-xs font-semibold py-2.5 px-3 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
+                                            <span>Visit Official Practice Site</span>
+                                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-sand-500"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
                 `;
-                grid.appendChild(card);
+
+                container.appendChild(categorySection);
             });
+
+            if (totalMatches === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-building-circle-xmark text-4xl text-slate-300 mb-3 block"></i>
+                        <h4 class="text-lg font-bold text-slate-800">No practices found in this specific area</h4>
+                        <p class="text-xs text-slate-500 mb-4">Try selecting "All Regions" to see full coastal listings.</p>
+                        <button onclick="resetRegionFilter()" class="bg-coastal-900 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reset Filter</button>
+                    </div>
+                `;
+            }
+        }
+
+        function resetRegionFilter() {
+            selectedArea = 'all';
+            document.querySelectorAll('.area-btn').forEach(b => {
+                b.classList.remove('active', 'bg-coastal-900', 'text-white');
+                b.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            const defaultBtn = document.querySelector('.area-btn[data-area="all"]');
+            if (defaultBtn) defaultBtn.classList.add('active', 'bg-coastal-900', 'text-white');
+            renderDirectory();
         }
 
         // Initialize script safely after DOM content loads
         document.addEventListener('DOMContentLoaded', () => {
+            const yearSpan = document.getElementById('year');
             if (yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
             }
@@ -485,63 +685,6 @@
                     btn.classList.remove('bg-slate-100', 'text-slate-700');
 
                     selectedArea = btn.getAttribute('data-area');
-                    renderDirectory();
-                });
-            }
-
-            const specialtyPills = document.getElementById('specialtyPills');
-            if (specialtyPills) {
-                specialtyPills.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.specialty-pill');
-                    if (!btn) return;
-
-                    document.querySelectorAll('.specialty-pill').forEach(b => {
-                        b.classList.remove('active', 'bg-sand-500', 'text-slate-900', 'font-semibold');
-                        b.classList.add('bg-white', 'text-slate-700', 'border');
-                    });
-
-                    btn.classList.add('active', 'bg-sand-500', 'text-slate-900', 'font-semibold');
-                    btn.classList.remove('bg-white', 'text-slate-700', 'border');
-
-                    selectedSpecialty = btn.getAttribute('data-specialty');
-                    renderDirectory();
-                });
-            }
-
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    searchQuery = e.target.value;
-                    renderDirectory();
-                });
-
-                searchInput.addEventListener('keyup', (e) => {
-                    searchQuery = e.target.value;
-                    renderDirectory();
-                });
-            }
-
-            const resetBtn = document.getElementById('resetFilters');
-            if (resetBtn) {
-                resetBtn.addEventListener('click', () => {
-                    selectedArea = 'all';
-                    selectedSpecialty = 'all';
-                    searchQuery = '';
-                    if (searchInput) searchInput.value = '';
-
-                    document.querySelectorAll('.area-btn').forEach(b => {
-                        b.classList.remove('active', 'bg-coastal-900', 'text-white');
-                        b.classList.add('bg-slate-100', 'text-slate-700');
-                    });
-                    const defaultAreaBtn = document.querySelector('.area-btn[data-area="all"]');
-                    if (defaultAreaBtn) defaultAreaBtn.classList.add('active', 'bg-coastal-900', 'text-white');
-
-                    document.querySelectorAll('.specialty-pill').forEach(b => {
-                        b.classList.remove('active', 'bg-sand-500', 'text-slate-900', 'font-semibold');
-                        b.classList.add('bg-white', 'text-slate-700', 'border');
-                    });
-                    const defaultSpecialtyBtn = document.querySelector('.specialty-pill[data-specialty="all"]');
-                    if (defaultSpecialtyBtn) defaultSpecialtyBtn.classList.add('active', 'bg-sand-500', 'text-slate-900', 'font-semibold');
-
                     renderDirectory();
                 });
             }
